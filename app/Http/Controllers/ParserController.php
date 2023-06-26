@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\News;
 use Parser;
 
 class ParserController extends Controller
@@ -24,8 +24,9 @@ class ParserController extends Controller
 
 	    	$main[] = $data;
 	    }
-	    $statement = DB::table('news')->insert($main);
-	    return $statement;
+
+	    $news = new News();
+	    return $news->InsertNews($main);
 	}
 
 }

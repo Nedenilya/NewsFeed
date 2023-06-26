@@ -41,20 +41,19 @@
 
 
 
-
+          @foreach($slider as $item)
           <div class="single_iteam slick-slide" index="0" style="width: 710px;">
-            <a href="/post/1">
-              <img src="images/slider_img4.jpg" alt="">
+            <a href="/post/{{ $item->id }}">
+              <img src="{{ $item->picture }}" alt="">
             </a>
             <div class="slider_article">
               <h2>
-                <a class="slider_tittle" href="/post/15">Fusce eu nulla semper porttitor felis sit amet</a>
+                <a class="slider_tittle" href="/post/15">{{ $item->title }}</a>
               </h2>
-              <p>My test text</p>
+              <p>{{ $item->body }}</p>
             </div>
           </div>
-          {!! $slider !!}
-
+          @endforeach
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
