@@ -52,6 +52,35 @@ jQuery(document).ready(function() {
     });
     $('.tootlip').tooltip();
     $("ul#ticker01").liScroll();
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".like-btn").click(function () {
+        var formData = new FormData();
+        let id = $(this).attr('id')
+        formData.append("id", id);
+        formData.append("likes", $(this).attr('value'));
+
+        $.ajax({
+            url: "/post/like",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                $("#"+id).attr('value', response);
+                $("#"+id).text(" "+response);
+            }
+        });
+    });
+
+
 });
 
 wow = new WOW({

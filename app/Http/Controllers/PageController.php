@@ -15,7 +15,7 @@ class PageController extends Controller
 	}
 
 	public function Post($id){
-		return view('single_page')->with($this->GetDefaultData());
+		return view('single_page')->with($this->GetDefaultData($id));
 	}
 
 	public function ContactUs(){
@@ -44,22 +44,29 @@ class PageController extends Controller
 		return $weekMap[$date->dayOfWeek];
 	}
 
-	public function GetDefaultData(){
-		$news = $this->GetNews();
+	public function GetDefaultData($id = null){
+		$newsAll = $this->GetNews();
 		$date = Carbon::now();
 		$weekday = $this->GetWeekDay($date);
 		$monthName = $date->format('F');
 
-		return [
+		$data = [
 			'time'=> $date->toArray(),
 			'day'=> $weekday,
 			'month'=> $monthName,
-			'slider' => $news
+			'slider' => $newsAll,
 		];
+
+		if($id)
+			$data['news'] = $this->GetNews($id);
+
+		return $data;
 	}
 
-	public function GetNews(){
+	public function GetNews($id = null){
 		$news = new News();
+		if($id)
+			return $news->GetNewsByField('id', $id);
 		return $news->all();
 	}
 	

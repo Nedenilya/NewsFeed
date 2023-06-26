@@ -25,3 +25,5 @@ Route::get('/contact', 'App\Http\Controllers\PageController@ContactUs');
 Route::get('/contact/send', 'App\Http\Controllers\RequestController@Contact');
 
 Route::get('/parse', 'App\Http\Controllers\ParserController@parse');
+
+Route::post('/post/like', 'App\Http\Controllers\NewsController@like');

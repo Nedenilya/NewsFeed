@@ -8,15 +8,11 @@
       <div class="col-lg-12 col-md-12">
         <div class="latest_newsarea"> <span>Latest News</span>
           <ul id="ticker01" class="news_sticker">
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My First News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My Second News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My Third News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My Four News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My Five News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My Six News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My Seven News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail3.jpg') }}" alt="">My Eight News Item</a></li>
-            <li><a href="#"><img src="{{ asset('images/news_thumbnail2.jpg') }}" alt="">My Nine News Item</a></li>
+            
+            @foreach($slider as $item)
+              <li><a href="/post/{{ $item->id }}"><img src="{{ $item->picture }}" alt="">{{ $item->title }}</a></li>
+            @endforeach
+
           </ul>
           <div class="social_area">
             <ul class="social_nav">

@@ -8,15 +8,11 @@
       <div class="col-lg-12 col-md-12">
         <div class="latest_newsarea"> <span>Latest News</span>
           <ul id="ticker01" class="news_sticker">
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My First News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My Second News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My Third News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My Four News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My Five News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My Six News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My Seven News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail3.jpg') }}" alt="">My Eight News Item</a></li>
-            <li><a href="#"><img src="{{ asset('/images/news_thumbnail2.jpg') }}" alt="">My Nine News Item</a></li>
+            
+            @foreach($slider as $item)
+              <li><a href="/post/{{ $item->id }}"><img src="{{ asset($item->picture) }}" alt="">{{ $item->title }}</a></li>
+            @endforeach
+
           </ul>
           <div class="social_area">
             <ul class="social_nav">
@@ -44,12 +40,11 @@
               <li><a href="#">Technology</a></li>
               <li class="active">Mobile</li>
             </ol>
-            <h1>Morbi dapibus, enim quis luctus interdum</h1>
+            <h1>{{ $news->title }}</h1>
             <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>Wpfreeware</a> <span><i class="fa fa-calendar"></i>6:49 AM</span> <a href="#"><i class="fa fa-tags"></i>Technology</a> </div>
-            <div class="single_page_content"> <img class="img-center" src="{{ asset('/images/single_post_img.jpg') }}" alt="">
-              <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui lectus, pharetra nec elementum eget, vulputate ut nisi. Aliquam accumsan, nulla sed feugiat vehicula, lacus justo semper libero, quis porttitor turpis odio sit amet ligula. Duis dapibus fermentum orci, nec malesuada libero vehicula ut. Integer sodales, urna eget interdum eleifend, nulla nibh laoreet nisl, quis dignissim mauris dolor eget mi. Donec at mauris enim. Duis nisi tellus, adipiscing a convallis quis, tristique vitae risus. Nullam molestie gravida lobortis. Proin ut nibh quis felis auctor ornare. Cras ultricies, nibh at mollis faucibus, justo eros porttitor mi, quis auctor lectus arcu sit amet nunc. Vivamus gravida vehicula arcu, vitae vulputate augue lacinia faucibus.</p>
-              <blockquote> Donec volutpat nibh sit amet libero ornare non laoreet arcu luctus. Donec id arcu quis mauris euismod placerat sit amet ut metus. Sed imperdiet fringilla sem eget euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque adipiscing, neque ut pulvinar tincidunt, est sem euismod odio, eu ullamcorper turpis nisl sit amet velit. Nullam vitae nibh odio, non scelerisque nibh. Vestibulum ut est augue, in varius purus. </blockquote>
-              <ul>
+            <div class="single_page_content"> <img class="img-center" src="{{ asset($news->picture) }}" alt="">
+              <p>{{ $news->body }}</p>
+             <!-- <ul>
                 <li>Nullam vitae nibh odio, non scelerisque nibh</li>
                 <li>Nullam vitae nibh odio, non scelerisque nibh</li>
                 <li>Nullam vitae nibh odio, non scelerisque nibh</li>
@@ -70,7 +65,10 @@
               <button class="btn btn-orange">Orange Button</button>
               <button class="btn btn-blue">Blue Button</button>
               <button class="btn btn-lime">Lime Button</button>
-              <button class="btn btn-theme">Theme Button</button>
+              <button class="btn btn-theme">Theme Button</button>-->
+
+              <h4 class="likes_placeholder"><i class="like-btn fa fa-thumbs-o-up" id="{{ $news->id }}" value="{{ $news->likes }}"> {{ $news->likes }}</i></h4>
+
             </div>
             <div class="social_link">
               <ul class="sociallink_nav">
