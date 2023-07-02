@@ -9,6 +9,7 @@ class RequestController extends Controller
 {
     
 	public function Contact(Request $request){
+		
 		DB::table('contacts')->insert([
 			'name' => '\''.$request->name.'\'',
 	      	'email' => '\''.$request->email.'\'', 
